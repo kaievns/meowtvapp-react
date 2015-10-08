@@ -16,5 +16,10 @@ export default React.StyleSheet.create({
     textAlign:    'center',
     color:        '#333333',
     marginBottom: 5,
+  },
+  thumb: {
+    width: 100,
+    height: 80,
+    backgroundColor: 'yellow'
   }
 });
