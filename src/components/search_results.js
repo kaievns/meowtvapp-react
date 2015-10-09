@@ -1,6 +1,5 @@
 import React, {ActivityIndicatorIOS} from "react-native";
 import Reflux from "reflux";
-import Actions from "../actions";
 import VideosStore from "../stores/videos_store";
 import VideosList from "./videos_list";
 import styles from "../styles";
@@ -13,8 +12,6 @@ export default class SearchResults extends React.Component {
     this.reflux = Reflux.listenTo(VideosStore, function(videos) {
       this.setState({videos: videos});
     });
-
-    setTimeout(function() { Actions.fetchVideos(); }, 0);
   }
 
   componentDidMount() {

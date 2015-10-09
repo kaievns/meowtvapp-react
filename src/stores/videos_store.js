@@ -9,9 +9,9 @@ const URL = "https://www.googleapis.com/youtube/v3/search?"+
 export default Reflux.createStore({
   listenables: [Actions],
 
-  async onFetchVideos() {
+  async onFetchVideos(query) {
     try {
-      let url      = URL + "&q=video+for+cats";
+      let url      = URL + "&q="+ this.escapeQuery(query || "");
       let response = await fetch(url);
       let data     = await response.json();
       let videos   = this.extractVideosList(data);
@@ -20,6 +20,10 @@ export default Reflux.createStore({
     } catch(e) {
       console.log("FAILED: loading videos", e);
     }
+  },
+
+  escapeQuery(text) {
+    return encodeURIComponent(text.toLowerCase());
   },
 
   extractVideosList(data) {
