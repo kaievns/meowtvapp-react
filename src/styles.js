@@ -17,9 +17,20 @@ export default React.StyleSheet.create({
     color:        '#333333',
     marginBottom: 5,
   },
+  videosList: {
+    flex: 1,
+    backgroundColor: "#333333"
+  },
+  video: {
+    width: 150,
+    height: 100,
+    margin: 5
+  },
   thumb: {
-    width: 100,
-    height: 80,
-    backgroundColor: 'yellow'
+    flex: 1
+  },
+  title: {
+    backgroundColor: 'transparent',
+    color: 'white'
   }
 });

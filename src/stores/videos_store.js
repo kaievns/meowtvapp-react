@@ -1,16 +1,17 @@
 import Reflux from "reflux";
 import Actions from "../actions";
-import Token from "./secret_token";
+import Token from "./secret_token"; // gitignored for maximum security
 
-const KEY = Token;
-const URL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=video&fields=items(id(videoId)%2Csnippet(title%2Cthumbnails(default)))&key="+KEY;
+const URL = "https://www.googleapis.com/youtube/v3/search?"+
+  "part=snippet&maxResults=50&type=video&fields=items(id(videoId)%2Csnippet(title%2Cthumbnails(default)))"+
+  "&key="+Token;
 
 export default Reflux.createStore({
   listenables: [Actions],
 
   async onFetchVideos() {
     try {
-      let url      = URL + "&q=cat+video";
+      let url      = URL + "&q=video+for+cats";
       let response = await fetch(url);
       let data     = await response.json();
       let videos   = this.extractVideosList(data);
