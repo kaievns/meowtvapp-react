@@ -1,6 +1,7 @@
 # OSX
 #
 .DS_Store
+ios/main.jsbundle
 
 # Xcode
 #
@@ -26,4 +27,7 @@ project.xcworkspace
 #
 node_modules/
 npm-debug.log
-ios/main.jsbundle
+
+
+# app related
+src/stores/secret_token.js

@@ -1,15 +1,32 @@
-import React from "react-native";
+import React, {View, Text} from "react-native";
 import GridView from "react-native-grid-view";
 import styles from "../styles.js";
-
-let {View, Text} = React;
+import Actions from "../actions";
+import VideosStore from "../stores/videos_store";
+import Reflux from "reflux";
 
 export default class SearchResults extends React.Component {
+
   constructor() {
     super();
-    this.state = {
-      movies: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
-    }
+    this.refluxHook = Reflux.listenTo(VideosStore, function() {
+      console.log("loaded!", arguments);
+    });
+
+    // this.state = this.refluxHook.getInitialState.apply(this);
+    this.state = {movies: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]};
+  }
+
+  componentDidMount() {
+    this.refluxHook.componentDidMount.apply(this);
+    setTimeout(function() {
+      console.log("triggering fetch")
+      Actions.fetchVideos();
+    }, 2000)
+  }
+
+  componentWillUnmount() {
+    this.refluxHook.componentWillUnmount.apply(this);
   }
 
   render() {
