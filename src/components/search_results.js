@@ -1,35 +1,35 @@
-import React from "react-native";
+import React, {ActivityIndicatorIOS} from "react-native";
 import Reflux from "reflux";
 import Actions from "../actions";
 import VideosStore from "../stores/videos_store";
 import VideosList from "./videos_list";
+import styles from "../styles";
 
 export default class SearchResults extends React.Component {
 
   constructor() {
     super();
-    this.state = {};
-    this.refluxHook = Reflux.listenTo(VideosStore, function(videos) {
-      console.log("loaded!", videos.length);
+    this.state  = {};
+    this.reflux = Reflux.listenTo(VideosStore, function(videos) {
       this.setState({videos: videos});
     });
+
+    setTimeout(function() { Actions.fetchVideos(); }, 0);
   }
 
   componentDidMount() {
-    this.refluxHook.componentDidMount.apply(this);
-    setTimeout(function() {
-      console.log("triggering fetch")
-      Actions.fetchVideos();
-    }, 2000)
+    this.reflux.componentDidMount.call(this);
   }
 
   componentWillUnmount() {
-    this.refluxHook.componentWillUnmount.apply(this);
+    this.reflux.componentWillUnmount.call(this);
   }
 
   render() {
-    let videos = this.state.videos || [];
-
-    return <VideosList videos={videos} />;
+    if (this.state.videos) {
+      return <VideosList videos={this.state.videos} />;
+    } else {
+      return <ActivityIndicatorIOS style={styles.locker} />;
+    }
   }
 }
