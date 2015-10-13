@@ -23,16 +23,6 @@ export default class VideosList extends React.Component {
   }
 
   renderItem(video) {
-    return <VideoEntry video={video} onSelect={()=> this.onSelect(video)} />;
-  }
-
-  onSelect(video) {
-    console.log("selected", video);
-
-    // this.props.navigator.push({
-    //   title: video.title,
-    //   component: VideoScreen,
-    //   passProps: {video: video}
-    // })
+    return <VideoEntry video={video} onSelect={()=> this.props.onSelect(video)} />;
   }
 }

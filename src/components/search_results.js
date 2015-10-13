@@ -24,7 +24,7 @@ export default class SearchResults extends React.Component {
 
   render() {
     if (this.state.videos) {
-      return <VideosList videos={this.state.videos} />;
+      return <VideosList videos={this.state.videos} onSelect={this.props.onSelect} />;
     } else {
       return <ActivityIndicatorIOS style={styles.locker} />;
     }
