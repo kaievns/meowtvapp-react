@@ -4,6 +4,11 @@ import styles from "../styles.js";
 import VideoEntry from "./video_entry";
 
 export default class VideosList extends React.Component {
+  constructor() {
+    super();
+    this.renderItem = this.renderItem.bind(this);
+  }
+
   render() {
     let videos = this.props.videos || [];
 
@@ -18,6 +23,16 @@ export default class VideosList extends React.Component {
   }
 
   renderItem(video) {
-    return <VideoEntry video={video} />;
+    return <VideoEntry video={video} onSelect={()=> this.onSelect(video)} />;
+  }
+
+  onSelect(video) {
+    console.log("selected", video);
+
+    // this.props.navigator.push({
+    //   title: video.title,
+    //   component: VideoScreen,
+    //   passProps: {video: video}
+    // })
   }
 }
