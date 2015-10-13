@@ -1,15 +1,17 @@
-import React, {View} from "react-native";
-import styles from "./styles";
-import SearchBar from "./components/search_bar";
-import SearchResults from "./components/search_results";
+import React, {NavigatorIOS} from "react-native";
+import SearchScreen from "./components/search_screen";
 
 export default class MeowTVApp extends React.Component {
   render() {
     return (
-      <View style={styles.body}>
-        <SearchBar />
-        <SearchResults />
-      </View>
+      <NavigatorIOS
+        style={{flex: 1}}
+        navigationBarHidden={true}
+        initialRoute={{
+          title:    'Search',
+          component: SearchScreen,
+        }}
+      />
     );
   }
 }
