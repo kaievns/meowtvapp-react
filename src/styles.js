@@ -24,6 +24,16 @@ export default React.StyleSheet.create({
     backgroundColor: '#444444',
     color: 'white'
   },
+  searchBarTitle: {
+    color: 'white',
+    marginTop: -20,
+  },
+  searchBarButtonLeft: {
+    alignSelf: 'flex-start',
+    color: 'white',
+    marginLeft: 5,
+    marginTop: 0
+  },
   videosList: {
     flex: 1,
     alignSelf: 'stretch'
