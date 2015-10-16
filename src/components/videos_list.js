@@ -1,5 +1,5 @@
 import React from "react-native";
-import GridView from "react-native-grid-view";
+import GridView from "./grid_view";
 import styles from "../styles.js";
 import VideoEntry from "./video_entry";
 
