@@ -1,5 +1,6 @@
 import React, {View, Text} from "react-native";
 import PlayerTitle from "./player_title";
+import PlayerVideo from "./player_video";
 import styles from "../styles";
 
 export default class PlayerScreen extends React.Component {
@@ -12,7 +13,7 @@ export default class PlayerScreen extends React.Component {
     return (
       <View style={styles.body}>
         <PlayerTitle onBack={this.goBack}>{this.props.video.title}</PlayerTitle>
-        <Text style={{color: "white"}}>Blah! {this.props.video.title}</Text>
+        <PlayerVideo videoId={this.props.video.id} style={styles.playerFrame} />
       </View>
     );
   }

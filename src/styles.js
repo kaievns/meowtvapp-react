@@ -31,8 +31,7 @@ export default React.StyleSheet.create({
   searchBarButtonLeft: {
     alignSelf: 'flex-start',
     color: 'white',
-    marginLeft: 5,
-    marginTop: 0
+    marginLeft: 10
   },
   videosList: {
     flex: 1,
@@ -52,5 +51,9 @@ export default React.StyleSheet.create({
   title: {
     backgroundColor: 'transparent',
     color: 'white'
+  },
+  playerFrame: {
+    flex: 1,
+    alignSelf: 'stretch'
   }
 });
